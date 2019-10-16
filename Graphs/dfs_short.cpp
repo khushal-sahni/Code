@@ -15,7 +15,7 @@ int main(){
   adj = new list <int> [V];
 
   for(int i = 0; i < V; i++){
-    edgeTo[i] = -1;
+    edgeTo[i] = i;
   }
 
   addEdge(0,1);
