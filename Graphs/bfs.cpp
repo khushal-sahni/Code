@@ -3,7 +3,7 @@
 using namespace std;
 
 bool *marked;			// pointer to array of marked and unmarked vertices
-int *edgeTo;			// pointer to array of edgeTo 
+int *edgeTo;			// pointer to array of edgeTo
 queue < int >q;			// queue to hold vertices
 list < int >*adj;		// adjacency lists
 
