@@ -9,7 +9,7 @@ int main(){
     scanf("%d %d",&n,&s);
     int arr[n];
     int l = 0,r = 0,sum = 0,found = 0;
-    for(int i = 0; i < n; i++) cin >> arr[i];
+    for(int i = 0; i < n; i++) scanf("%d",&arr[i]);
     while(r < n){
       sum += arr[r];
       if(sum == s){
