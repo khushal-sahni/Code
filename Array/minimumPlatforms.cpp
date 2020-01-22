@@ -11,7 +11,7 @@ int main(){
     int arrivalTimes[n],departureTimes[n];
     for(i = 0; i < n; i++) scanf("%d",&arrivalTimes[i]);
     for(i = 0; i < n; i++) scanf("%d",&departureTimes[i]);
-    multimap <int,char> trainMap;
+    multimap <int,char> trainMap; //can also be done with array {'a900','d910'} etc
     for(i = 0; i < n; i++) trainMap.insert(pair <int, char> (arrivalTimes[i],'a'));
     for(i = 0; i < n; i++) trainMap.insert(pair <int, char> (departureTimes[i],'d'));
     int count = 0,maxCount = 0;
