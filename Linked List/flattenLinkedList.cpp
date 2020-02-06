@@ -30,3 +30,33 @@ Node* flatten(Node* root){
   node->bottom = NULL;
   return root;
 }
+
+// Another way to do this
+
+
+Node *merge(Node *a,Node *b)
+{
+if(a==NULL)
+return b;
+if(b==NULL)
+return a;
+Node *r;
+if(a->data<b->data)
+{
+    r=a;
+    r->bottom=merge(a->bottom,b);
+}
+else
+{
+    r=b;
+    r->bottom=merge(b->bottom,a);
+}
+return r;
+}
+Node *flatten(Node *root)
+{
+if(root==NULL||root->next==NULL)
+return root;
+return merge(root,flatten(root->next));
+// Your code here
+}
