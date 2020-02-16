@@ -58,3 +58,17 @@ bool isSymmetric(struct Node* root)
   }
   return true;
 }
+///////////////////ANOTHER SOLUTION/////////////////////////////
+bool find(Node *l,Node *r)
+{
+if((l&& !r) || (l && !r)) return 0;
+if(!l && !r) return 1;
+if(l->key != r->key) return 0;
+
+return (find(l->left,r->right)&&find(l->right,r->left));
+}
+bool isSymmetric(struct Node* root)
+{
+if(root) return find(root->left,root->right);
+return NULL;
+}
