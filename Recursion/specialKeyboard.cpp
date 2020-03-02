@@ -1,15 +1,16 @@
 #include<bits/stdc++.h>
 using namespace std;
+typedef unsigned long long int ull;
 
-unsigned long long int findoptimal(unsigned long long int N)
+ull findoptimal(ull N)
 {
     if (N <= 6)
         return N;
 
-   unsigned long long int screen[N];
+   ull screen[N];
 
-   unsigned long long int b;
-    unsigned long long int n;
+   ull b;
+    ull n;
     for (n=1; n<=6; n++)
         screen[n-1] = n;
 
@@ -19,7 +20,7 @@ unsigned long long int findoptimal(unsigned long long int N)
 
         for (b=n-3; b>=1; b--)
         {
-            unsigned long long int curr = (n-b-1)*screen[b-1];
+            ull curr = (n-b-1)*screen[b-1];
             if (curr > screen[n-1])
                 screen[n-1] = curr;
         }
