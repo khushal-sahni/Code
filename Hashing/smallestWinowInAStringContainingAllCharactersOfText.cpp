@@ -1,3 +1,67 @@
+
+#include <iostream>
+#include <unordered_map>
+#include <set>
+#include <string>
+using namespace std;
+int main(){
+  int t;
+  cin >> t;
+  while(t--){
+    string s,text;
+    cin >> s >> text;
+    int i, counter = 0, beginning = -1, minimumLength = s.length()+1;
+    unordered_map <char,int> m;
+    for(i = 0; i < text.length(); i++){
+      if(m.find(text[i]) == m.end()) m.insert(pair <char,int>(text[i],1));
+      else m[text[i]]++;
+    }
+    unordered_map <char, set<int>> n;
+    set <int> foundIndexes;
+    for(i = 0; i < s.length(); i++){
+      if(m.find(s[i]) != m.end()){
+        foundIndexes.insert(i);
+        if(n.find(s[i]) == n.end()){
+          set <int> otakuSet;
+          otakuSet.insert(i);
+          n.insert(pair <char,set<int>> (s[i],otakuSet));
+          counter++;
+        }
+        else{
+          if(n[s[i]].size() < m[s[i]]){
+            n[s[i]].insert(i);
+            counter++;
+          }
+          else{
+            auto it = n[s[i]].begin();
+            foundIndexes.erase(*it);
+            n[s[i]].erase(it);
+            n[s[i]].insert(i);
+          }
+        }
+        if(counter == text.length()){
+          int length = i + 1 - (*foundIndexes.begin());
+          if(length < minimumLength){
+            beginning = (*foundIndexes.begin());
+            minimumLength = length;
+          }
+          counter--;
+          auto it = foundIndexes.begin();
+          n[s[*it]].erase(n[s[*it]].begin());
+          foundIndexes.erase(it);
+        }
+
+      }
+    }
+    if(beginning == -1) cout << -1 << "\n";
+    else cout << s.substr(beginning,minimumLength) << "\n";
+
+  }
+}
+
+
+
+// *****************************GEEKSFORGEEKS SOLUTION*****************************
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -43,7 +107,7 @@ int main()
 
                 // If string's char matches with pattern's char
 		        // then increment count
-                if(phash[s[i]]-'a'!=0&&shash[s[i]-'a']<=phash[s[i]-'a'])
+                if(phash[s[i]-'a']!=0&&shash[s[i]-'a']<=phash[s[i]-'a'])
                 {
                     counter++;
                 }
