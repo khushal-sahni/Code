@@ -9,6 +9,7 @@ using lli  = long long int;
 #define pb push_back
 #define ff first
 #define ss second
+#define p(x) cout << "here " << #x << " is " << (x) << "\n";
 
 int main(){
   ios_base::sync_with_stdio(false);
