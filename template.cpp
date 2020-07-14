@@ -9,6 +9,7 @@ using lli  = long long int;
 #define pb push_back
 #define ff first
 #define ss second
+#define pi pair <int,int>
 #define p(x) cout << #x << " is " << (x) << " on Line:" << __LINE__ << " \n";
 
 int main(){
