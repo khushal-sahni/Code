@@ -10,6 +10,8 @@ using lli  = long long int;
 #define ff first
 #define ss second
 #define pi pair <int,int>
+#define vi vector <int>
+#define vc vector <char>
 #define p(x) cout << #x << " is " << (x) << " on Line:" << __LINE__ << " \n";
 
 int main(){
