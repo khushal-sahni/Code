@@ -17,13 +17,6 @@ using lli  = long long int;
 
 int sz;
 
-lli build(int s, vl &v){
-
-	if(2*s + 1 >= sz*2 - 1) return v[s];//leaf node
-	v[s] = build(2*s+1,v) + build(2*s + 2,v);
-
-	return v[s];
-}
 
 void update(int s, vl &v){
 	v[s] = v[2*s+1] + v[2*s+2];
@@ -52,9 +45,13 @@ int main(){
   while(sz < n) sz *= 2;
 
   vl v(sz*2 - 1,0);
-  for(int i = 0; i < n; ++i) cin >> v[sz-1+i];
+ 
+  for(int i = 0; i < n; ++i){
+	  int pos = sz-1 +i;
+	  cin >> v[pos];
+	  if(pos > 0) update((pos-1)/2,v);
+  }
 
-  build(0,v);
  
   while(m--){
 	  int q;
