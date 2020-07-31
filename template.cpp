@@ -17,6 +17,7 @@ using lli  = long long int;
 
 int main(){
   ios_base::sync_with_stdio(false);
+  cin.tie(nullptr);
   int _;
   cin >> _;
   while(_--){
