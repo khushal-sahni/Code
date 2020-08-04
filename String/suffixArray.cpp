@@ -14,7 +14,6 @@ using lli  = long long int;
 #define vc vector <char>
 #define vl vector <lli>
 #define p(x) cout << #x << " is " << (x) << " on Line:" << __LINE__ << " \n";
-#define pl(x) for(auto &y:x) cout << y << " "; cout << "\n";
 
 int main(){
   ios_base::sync_with_stdio(false);
