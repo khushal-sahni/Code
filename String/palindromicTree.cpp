@@ -27,7 +27,7 @@ void insert(int ind, vector <node> &tree){
 	int temp = curr;
 	while(true){
 		int l = tree[temp].len;
-		if(ind-l >= 1 && s[ind] == s[ind-l-1]) break;//>=1 means a guy exists 
+		if(ind-l-1 >= 0 && s[ind] == s[ind-l-1]) break;//>=1 means a guy exists 
 		temp = tree[temp].sufflink;
 	}
 	if(tree[temp].insertEdg[s[ind]-'a'] != 0){
@@ -40,7 +40,7 @@ void insert(int ind, vector <node> &tree){
 	tree[ptr].end = ind;
 	tree[ptr].start = ind- tree[ptr].len + 1;
 	
-	temp = tree[temp].sufflink;
+	temp = tree[temp].sufflink;//need to move one down can't have itself as the suffix link
 	curr = ptr;
 	if(tree[curr].len == 1){
 		tree[curr].sufflink = 1;//1 is 0 indexed it refers to the second root 
@@ -48,7 +48,7 @@ void insert(int ind, vector <node> &tree){
 	}
 	while(true){
 		int l = tree[temp].len;
-		if(ind - l >=1 && s[ind] == s[ind-l-1]) break;
+		if(ind - l -1 >=0 && s[ind] == s[ind-l-1]) break;
 		temp = tree[temp].sufflink;
 	}
 	tree[curr].sufflink = tree[temp].insertEdg[s[ind]-'a'];
@@ -61,14 +61,13 @@ int main(){
   int l = s.length();
   vector <node> tree(l+2);
   tree[0].len = -1, tree[0].sufflink = 0, tree[1].len = 0, tree[1].sufflink = 0;
-  ptr = 1; //node you're at
+  ptr = 1; //to track which pos to add new node to
   curr = 0; 
 
 	for (int i=0; i<l; i++) 
 		insert(i,tree); 
 
-	// printing all of its distinct palindromic 
-	// substring 
+	// printing all of its distinct palindromic substring
 	cout << "All distinct palindromic substring for "
 		<< s << " : \n"; 
 	for (int i=2; i<=ptr; i++) 
@@ -79,4 +78,7 @@ int main(){
 		cout << endl; 
 	} 
 }
+
+//Here you can see the first node acts as default fallback node for character edges 
+// the second node acts as the default fallback node for suff link
 
