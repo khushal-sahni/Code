@@ -17,7 +17,8 @@ using lli  = long long int;
 #define pl(x) for(auto &y:x) cout << y << " "; cout << "\n";
 
 struct node{
-	int start,end,len, insertEdg[26],sufflink; //need to modify this to unordered_map so that works for everything
+	int start,end,len,sufflink; //need to modify this to unordered_map so that works for everything
+	unordered_map <char,int> edge;
 };
 
 int curr,ptr;
@@ -30,12 +31,12 @@ void insert(int ind, vector <node> &tree){
 		if(ind-l-1 >= 0 && s[ind] == s[ind-l-1]) break;//>=1 means a guy exists 
 		temp = tree[temp].sufflink;
 	}
-	if(tree[temp].insertEdg[s[ind]-'a'] != 0){
-		curr = tree[temp].insertEdg[s[ind]-'a'];// if edge already exists just move on
-		return ;
+	if(tree[temp].edge.find(s[ind]) != tree[temp].edge.end()){
+		curr = tree[temp].edge[s[ind]];
+		return;
 	}
 	++ptr;
-	tree[temp].insertEdg[s[ind]-'a'] = ptr;
+	tree[temp].edge[s[ind]] = ptr;
 	tree[ptr].len = tree[temp].len + 2;
 	tree[ptr].end = ind;
 	tree[ptr].start = ind- tree[ptr].len + 1;
@@ -51,7 +52,7 @@ void insert(int ind, vector <node> &tree){
 		if(ind - l -1 >=0 && s[ind] == s[ind-l-1]) break;
 		temp = tree[temp].sufflink;
 	}
-	tree[curr].sufflink = tree[temp].insertEdg[s[ind]-'a'];
+	tree[curr].sufflink = tree[temp].edge[s[ind]];
 }
 
 int main(){
@@ -60,7 +61,7 @@ int main(){
   cin >> s;
   int l = s.length();
   vector <node> tree(l+2);
-  tree[0].len = -1, tree[0].sufflink = 0, tree[1].len = 0, tree[1].sufflink = 0;
+  tree[0].len = -1, tree[0].sufflink = tree[1].len = tree[1].sufflink = 0;
   ptr = 1; //to track which pos to add new node to
   curr = 0; 
 
