@@ -17,7 +17,7 @@ using lli  = long long int;
 #define pl(x) for(auto &y:x) cout << y << " "; cout << "\n";
 
 struct node{
-	int start,end,len,sufflink; //need to modify this to unordered_map so that works for everything
+	int start,end,len,sufflink; 
 	unordered_map <char,int> edge;
 };
 
