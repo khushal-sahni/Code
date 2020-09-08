@@ -11,7 +11,6 @@ using lli  = long long int;
 #define ss second
 #define pi pair <int,int>
 #define vi vector <int>
-#define vc vector <char>
 #define vl vector <lli>
 #define p(x) cout << #x << " is " << (x) << " on Line:" << __LINE__ << " \n";
 #define pl(x) for(auto &y:x) cout << y << " "; cout << "\n";
