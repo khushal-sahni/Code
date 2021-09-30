@@ -17,6 +17,7 @@ using lli  = long long int;
 #define pl(x) for(auto &y:x) cout << y << " "; cout << "\n";
 #define ppl(x) for(auto &y:x) cout << y.ff << " " << y.ss << " | ";cout << "\n";
 #define um unordered_map
+#define rep(i,a,b) for(int i = a; i < b; ++i)
 
 int main(){
   ios_base::sync_with_stdio(false);
