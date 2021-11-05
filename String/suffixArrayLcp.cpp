@@ -20,12 +20,13 @@ void csort(){
     o1[pos[c[val]]] = val;
     ++pos[c[val]];
   }
-  o1 = o;
+  o = o1;
 }
 
 int main(){
   string s;
   cin >> s;
+  s += "!";
   int n = s.size();
   o.resize(n);
   c.resize(n);
@@ -47,8 +48,8 @@ int main(){
     vi c1(n);
     c1[o[0]] = 0;
     rep(i,1,n){
-      pi curr = {c[o[i]], c[ (o[i] + (1 << n)) % n ]};
-      pi prev = {c[o[i-1]], c[ (o[i-1] + (1 << n)) % n ]};
+      pi curr = {c[o[i]], c[ (o[i] + (1 << k)) % n ]};
+      pi prev = {c[o[i-1]], c[ (o[i-1] + (1 << k)) % n ]};
       if(curr == prev) c1[o[i]] = c1[o[i-1]];
       else c1[o[i]] = c1[o[i-1]] + 1;
     }
@@ -68,5 +69,8 @@ int main(){
     lcp[c[i]] = common;
     common = max(common-1, 0);
   }
+
+  for(auto &val: o) cout << val << " "; cout << "\n";
+  for(auto &val: lcp) cout << val << " "; cout << "\n";
 
 }
